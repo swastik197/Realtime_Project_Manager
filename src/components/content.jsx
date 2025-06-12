@@ -37,7 +37,7 @@ const recentprojects = [
 
 
 
-function content() {
+function content({onCreateProjectClick}) {
     const [recentcolor, setRecentColor] = useState('bg-gray-300');
     const [tasks, showtasks] = useState(true)
     const [projects, showtprojects] = useState(false)
@@ -97,7 +97,7 @@ function content() {
                         <h1 className='text-xl font-medium'>Workspace Overview</h1>
                         <p>Here's an overview for this workspace</p>
                     </div>
-                    <button className='flex items-center bg-black rounded-lg h-fit p-1 mx-4 md:mx-10 cursor-pointer'>
+                    <button className='flex items-center bg-black rounded-lg h-fit p-1 mx-4 md:mx-10 cursor-pointer' onClick={onCreateProjectClick}>
                         <AddIcon style={{ fontSize: 20, padding: 1, margin: 1, color: "white" }} />
                         <p className='text-white text-sm font-medium'>New Project</p>
                     </button>
