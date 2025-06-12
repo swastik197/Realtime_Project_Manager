@@ -26,7 +26,7 @@ const menuItems = [
     {name: 'Calendar',},
 ];
 
-function Topnavigation() {
+function Topnavigation({onCreateProjectClick}) {
     const [openSection, setOpenSection] = useState(null);
 
 
@@ -42,7 +42,7 @@ function Topnavigation() {
                 <div className="flex justify-between ">
                     <p className="p-1 mx-2">Workspaces</p>
 
-                    <AddIcon style={{ fontSize: 20, padding: 1, margin: 8 }} />
+                    <AddIcon style={{ fontSize: 20, padding: 1, margin: 8, cursor:"pointer"}}   />
 
                 </div>
                 <div className="flex justify-between">
@@ -78,7 +78,7 @@ function Topnavigation() {
                  <div className="flex justify-between ">
                     <p className="p-1 mx-2">Projects</p>
 
-                    <AddIcon style={{ fontSize: 20, padding: 1, margin: 8 }} />
+                    <AddIcon  onClick={onCreateProjectClick} style={{ fontSize: 20, padding: 1, margin: 8,cursor:"pointer",  }}  />
 
                 </div>
                 <ul className="mask-b-from-10%">
