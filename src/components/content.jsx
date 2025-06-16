@@ -1,7 +1,8 @@
 import AddIcon from '@mui/icons-material/Add';
 import VerticalSplitOutlinedIcon from '@mui/icons-material/VerticalSplitOutlined';
 import TextRotationNoneOutlinedIcon from '@mui/icons-material/TextRotationNoneOutlined';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Loader from './loader';
 const overview = [
     {
         name: "Total Task",
@@ -22,8 +23,8 @@ const overview = [
 ]
 const recentprojects = [
     { name: "Frontend component library", date: "january 03, 2025", imogie: "🤖" },
-    { name: "Frontend component library", date: "january 07, 2025", imogie: "🐔" },
-    { name: "Frontend component library", date: "january 09, 2025", imogie: "🐢" },
+    { name: "Website Redesign", date: "january 07, 2025", imogie: "🐔" },
+    { name: "Buiness meeting", date: "january 09, 2025", imogie: "🐢" },
     { name: "Frontend component library", date: "january 03, 2025", imogie: "⚒️" },
     { name: "Frontend component library", date: "january 03, 2025", imogie: "😈" },
     { name: "Frontend component library", date: "january 03, 2025", imogie: "🫎" },
@@ -37,12 +38,12 @@ const recentprojects = [
 
 
 
-function content({onCreateProjectClick}) {
+function content({ onCreateProjectClick }) {
     const [recentcolor, setRecentColor] = useState('bg-gray-300');
     const [tasks, showtasks] = useState(true)
     const [projects, showtprojects] = useState(false)
     const [users, showusers] = useState(false)
-
+    const [loading, setLoading] = useState(true);
     function showRecentTasks() {
         showtasks(true)
         showusers(false)
@@ -73,7 +74,12 @@ function content({onCreateProjectClick}) {
         }
         )
     }
-
+    useEffect(() => {
+        setTimeout(() => {
+            // Simulate API call
+            setLoading(false);
+        }, 2000);
+    }, []);
 
 
 
@@ -88,7 +94,7 @@ function content({onCreateProjectClick}) {
         <>
             <main className="flex flex-col flex-1 ">
 
-                <nav className="w-full flex gap-1 bg-gray-100 md:p-3">
+                <nav className="w-full flex gap-1 rounded-xl bg-gray-100 md:p-3">
                     <VerticalSplitOutlinedIcon />
                     <p>Dashboard</p>
                 </nav>
@@ -121,37 +127,44 @@ function content({onCreateProjectClick}) {
                         </button>
 
 
-                        <button onClick={showRecentUsers}  className={`p-2 ${recentcolor} rounded-xl hover:bg-gray-300 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-fit cursor-pointer`} > Recent Members</button>
+                        <button onClick={showRecentUsers} className={`p-2 ${recentcolor} rounded-xl hover:bg-gray-300 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-fit cursor-pointer`} > Recent Members</button>
                         <button onClick={showRecentprojects} className={`p-2 ${recentcolor} rounded-xl hover:bg-gray-300 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-fit cursor-pointer`}> Recent Projects</button>
                     </div>
-                    {tasks &&
-                        <div className='bg-gray-100 rounded-2xl py-2'>
-                            {
-                                recentprojects.map((project) => (
-                                    <div className='w-full flex my-3.5 justify-between'>
 
-                                        <div className='flex md:mx-14  items-center'>
+    {loading ? (
+        <Loader />
+    ) : (
+        tasks && (
+            <div className='bg-gray-100 rounded-2xl py-2'>
+                {
+                    recentprojects.map((project) => (
+                        <div className='w-full flex my-3.5 justify-between'>
 
-                                            <p className='text-4xl'>{project.imogie}</p>
-                                            <div>
-                                                <h2 className='text-md font-medium'>{project.name}</h2>
-                                                <p className='tect-xs'>{project.date}</p>
+                            <div className='flex md:mx-14  items-center'>
 
-
-                                            </div>
-                                        </div>
-                                        <div className='hidden md:flex md:mx-14'>
-                                            <p>Created by</p>
-                                            <TextRotationNoneOutlinedIcon />
-
-                                        </div>
+                                <p className='text-4xl'>{project.imogie}</p>
+                                <div>
+                                    <h2 className='text-md font-medium'>{project.name}</h2>
+                                    <p className='tect-xs'>{project.date}</p>
 
 
-                                    </div>
+                                </div>
+                            </div>
+                            <div className='hidden md:flex md:mx-14'>
+                                <p>Created by</p>
+                                <TextRotationNoneOutlinedIcon />
 
-                                ))
-                            }
-                        </div>}
+                            </div>
+
+
+                        </div>
+
+                    ))
+                }
+            </div>
+        )
+    )}
+
                     {projects && <div className='bg-gray-100 rounded-2xl py-2'>
                         {
                             recentprojects.map((project) => (

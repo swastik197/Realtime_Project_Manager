@@ -1,19 +1,46 @@
-import { useState } from 'react'
-import Topnavigation from './components/Sidenavigation';
+import { useState,useEffect } from 'react'
+import Sidenavigation from './components/Sidenavigation';
 import Content from './components/content';
 import CreateProject from './components/createProjects';
+import Loader from './components/mainLoader';
+import Setting from './components/settings'
+import Project from './components/Project';
 
 
 
 function App() {
  const [showCreateProject,setShowCreateProject]=useState(false)
 
+const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate first load time (e.g. auth check, data preload)
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // adjust delay as needed
+
+    return () => clearTimeout(timer); // cleanup
+  }, []);
+
+  if (loading) {
+    return( 
+    <Loader/> );
+  }
+
+
+
+
+
+
+
+
   return (
     <div className="h-screen flex">
-      <Topnavigation onCreateProjectClick={() => setShowCreateProject(true)} />
+      <Sidenavigation onCreateProjectClick={() => setShowCreateProject(true)} />
       <main className="flex-1 flex flex-col overflow-y-auto p-4 bg-gray-50">
-        <Content onCreateProjectClick={() => setShowCreateProject(true)} />
-
+        {/* <Content onCreateProjectClick={() => setShowCreateProject(true)} /> */}
+       {/* <Setting/> */}
+       <Project/>
       </main>
       { showCreateProject &&
 

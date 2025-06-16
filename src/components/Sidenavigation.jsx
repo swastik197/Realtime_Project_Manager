@@ -20,7 +20,7 @@ const projects = [
 
 const menuItems = [
     {name: 'Dashboard',},
-    {name: 'Task',},
+    {name: 'Projects',},
     {name: 'Members',},
     {name: 'Settings',},
     {name: 'Calendar',},
@@ -65,7 +65,7 @@ function Topnavigation({onCreateProjectClick}) {
                         menuItems.map((item) => (
                             <li  className="flex items-center w-auto hover:bg-gray-200 p-1 rounded-lg mx-2 gap-1 ">
                                 {item.name === "Dashboard" && <DashboardOutlinedIcon/>}
-                                {item.name === "Task" && <TaskOutlinedIcon />}
+                                {item.name === "Projects" && <TaskOutlinedIcon />}
                                 {item.name === "Members" && <PeopleAltOutlinedIcon />}
                                 {item.name === "Settings" && <SettingsOutlinedIcon />}
                                 {item.name === "Calendar" && <CalendarMonthOutlinedIcon />}
