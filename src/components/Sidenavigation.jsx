@@ -7,6 +7,7 @@ import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 
 const projects = [
     { id: 1, name: 'Website Redesign', imogie: "⚒️"  },
@@ -21,9 +22,9 @@ const projects = [
 const menuItems = [
     {name: 'Dashboard',},
     {name: 'Projects',},
-    {name: 'Members',},
-    {name: 'Settings',},
+    {name: 'Messages',},
     {name: 'Calendar',},
+    {name: 'Settings',},
 ];
 
 function Topnavigation({onCreateProjectClick}) {
@@ -66,9 +67,9 @@ function Topnavigation({onCreateProjectClick}) {
                             <li  className="flex items-center w-auto hover:bg-gray-200 p-1 rounded-lg mx-2 gap-1 ">
                                 {item.name === "Dashboard" && <DashboardOutlinedIcon/>}
                                 {item.name === "Projects" && <TaskOutlinedIcon />}
-                                {item.name === "Members" && <PeopleAltOutlinedIcon />}
-                                {item.name === "Settings" && <SettingsOutlinedIcon />}
+                                {item.name === "Messages" && <ChatOutlinedIcon />}
                                 {item.name === "Calendar" && <CalendarMonthOutlinedIcon />}
+                                {item.name === "Settings" && <SettingsOutlinedIcon />}
                                 <a href="">{item.name}</a>
                             </li>
                         ))

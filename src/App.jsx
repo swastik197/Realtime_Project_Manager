@@ -5,6 +5,7 @@ import CreateProject from './components/createProjects';
 import Loader from './components/mainLoader';
 import Setting from './components/settings'
 import Project from './components/Project';
+import Projects from './components/Projects';
 
 
 
@@ -39,8 +40,9 @@ const [loading, setLoading] = useState(true);
       <Sidenavigation onCreateProjectClick={() => setShowCreateProject(true)} />
       <main className="flex-1 flex flex-col overflow-y-auto p-4 bg-gray-50">
         {/* <Content onCreateProjectClick={() => setShowCreateProject(true)} /> */}
+        <Projects/>
        {/* <Setting/> */}
-       <Project/>
+       {/* <Project/> */}
       </main>
       { showCreateProject &&
 
