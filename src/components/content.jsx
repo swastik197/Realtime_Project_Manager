@@ -10,6 +10,7 @@ import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 
 
 import Loader from './loader';
+import Topnavigation from './Sidenavigation';
 const overview = [
     {
         name: "Total Task",
@@ -64,27 +65,28 @@ function content({ onCreateProjectClick }) {
     return (
 
         <>
+
             <main className="flex flex-col flex-1 ">
 
-                <nav className="w-full flex gap-1 rounded-xl bg-gray-100 md:p-3">
-                    <VerticalSplitOutlinedIcon />
-                    <p>Dashboard</p>
+                <nav className="w-full flex gap-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-400 p-2 shadow-md mb-6 items-center">
+                    <VerticalSplitOutlinedIcon className="text-white" />
+                    <p className="text-lg font-bold text-white tracking-wide">Dashboard</p>
                 </nav>
                 <section className='w-full flex my-2 justify-between items-center'>
                     <div className='mx-4 md:mx-10'>
-                        <h1 className='text-xl font-medium'>Workspace Overview</h1>
-                        <p>Here's an overview for this workspace</p>
+                        <h1 className='text-2xl font-bold text-indigo-700 mb-1 '>Workspace Overview</h1>
+                        <p className="text-gray-500">Here's an overview for this workspace</p>
                     </div>
-                    <button className='flex items-center bg-black rounded-lg h-fit p-1 mx-4 md:mx-10 cursor-pointer' onClick={onCreateProjectClick}>
-                        <AddIcon style={{ fontSize: 20, padding: 1, margin: 1, color: "white" }} />
-                        <p className='text-white text-sm font-medium'>New Project</p>
+                    <button className='flex items-center bg-gradient-to-r from-indigo-500 to-blue-500 rounded-xl shadow-lg h-fit p-2 px-4 mx-4 md:mx-10 cursor-pointer transition hover:scale-105 hover:from-indigo-600 hover:to-blue-600' onClick={onCreateProjectClick}>
+                        <AddIcon style={{ fontSize: 22, color: "white" }}  />
+                        <p className='text-white text-base font-semibold ml-2  truncate'>New Project</p>
                     </button>
                 </section>
                 <section className=' grid grid-cols-2 md:grid-cols-4   gap-4  w-full  my-2'>
                     {overview.map((item) =>
-                        <div key={item.name} className="  p-3 rounded-2xl bg-white border-2 border-gray-200 shadow-sm hover:shadow-md transition">
-                            <p>{item.name}</p>
-                            <p className='text-3xl font-semibold'>{item.input}</p>
+                        <div key={item.name} className="p-5 rounded-2xl bg-white border-0 shadow-lg hover:shadow-xl transition flex flex-col items-start">
+                        <p className="text-gray-500 text-sm mb-1">{item.name}</p>
+                        <p className='text-4xl font-extrabold text-indigo-700'>{item.input}</p>
                         </div>
                     )}
                 </section>
@@ -96,28 +98,28 @@ function content({ onCreateProjectClick }) {
 
                         <div >
                             <div className='w-full '>Recent Tasks</div>
-                            <div className='mask-b-from-10'>
-                            {recentprojects.map((project) => (
-                                <div
-                                    key={project.id + '-lineup'}
-                                    className="w-full rounded-3xl bg-gray-300 p-2 flex my-2.5 items-center justify-between"
-                                >
-                                    <div className="flex items-center space-x-2">
-                                        <p className="text-4xl">{project.imogie}</p>
-                                        <div>
-                                            <h3 className="text-md font-medium text-gray-700">{project.name}</h3>
-                                            <p className="text-xs text-gray-600">Due Date: {project.date}</p>
+                            <div className=''>
+                                {recentprojects.map((project) => (
+                                    <div
+                                        key={project.id + '-lineup'}
+                                        className="w-full rounded-3xl bg-gray-300 p-2 flex my-2.5 items-center justify-between"
+                                    >
+                                        <div className="flex items-center space-x-2">
+                                            <p className="text-4xl">{project.imogie}</p>
+                                            <div>
+                                                <h3 className="text-md font-medium text-gray-700">{project.name}</h3>
+                                                <p className="text-xs text-gray-600">Due Date: {project.date}</p>
+                                            </div>
                                         </div>
+                                        <div className="hidden md:flex items-center gap-2 mx-6">
+                                            <p className="text-sm">Created by</p>
+                                            <TextRotationNoneOutlinedIcon />
+                                        </div>
+                                        <MoreHorizOutlinedIcon />
                                     </div>
-                                    <div className="hidden md:flex items-center gap-2 mx-6">
-                                        <p className="text-sm">Created by</p>
-                                        <TextRotationNoneOutlinedIcon />
-                                    </div>
-                                    <MoreHorizOutlinedIcon />
-                                </div>
-                            ))}</div>
+                                ))}</div>
                             <div className='w-full flex justify-end'>View All</div>
-                            </div>
+                        </div>
 
                         <div>
                             <div className='p-2'>

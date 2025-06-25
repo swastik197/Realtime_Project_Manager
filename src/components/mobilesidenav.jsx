@@ -34,12 +34,12 @@ function Topnavigation({ onCreateProjectClick }) {
 
     return (
         <>
-            <nav className="w-68 hidden md:block h-full bg-gradient-to-b from-indigo-600 to-blue-500 rounded-r-3xl shadow-xl p-6 transition-all duration-300">
-
+            <nav className="w-68 absolute  top-0 z-0 left-0 md:hidden h-full bg-gradient-to-b from-indigo-600 to-blue-500 rounded-r-3xl shadow-xl p-6 transition-all duration-300">
+{/* 
                 <div className="flex items-center">
                     <img src="https://t4.ftcdn.net/jpg/04/51/26/93/360_F_451269306_U5VVjfXzU2OZLyaLOKmkI73SCwBcjgvF.jpg" className="h-10 w-12" alt="" />
                     <p className="text-xl text-white">Team Aplha</p>
-                </div>
+                </div> */}
                 <div className="flex justify-between ">
                     <p className="p-1 mx-2 text-white">Workspaces</p>
 
