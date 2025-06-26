@@ -69,21 +69,20 @@ function Projects() {
         <>
             <main className="flex flex-col flex-1 ">
 
-                <nav className="w-full flex gap-1 rounded-xl bg-gray-100 md:p-3">
-                    <VerticalSplitOutlinedIcon />
-                    <p>Dashboard</p>
+              <nav className="w-full flex gap-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-400 p-2 shadow-md mb-6 items-center">
+                    <VerticalSplitOutlinedIcon className="text-white" />
+                    <p className="text-lg font-bold text-white tracking-wide">Projects</p>
                 </nav>
                 <section>
 
                     <section className='w-full flex my-2 justify-between items-center'>
-                        <div className='mx-4 md:mx-10'>
-                            <h1 className='text-xl font-medium'>Tasks</h1>
-
-                        </div>
-                        <button className='flex items-center bg-black rounded-lg h-fit p-1 mx-4 md:mx-10 cursor-pointer' >
-                            <AddIcon style={{ fontSize: 20, padding: 1, margin: 1, color: "white" }} />
-                            <p className='text-white text-sm font-medium'>New Project</p>
-                        </button>
+                       
+                        <h1 className='text-2xl font-bold mx-4 md:mx-10 text-indigo-700 mb-1'>All Projects</h1>
+                    
+                        <button className='flex items-center bg-gradient-to-r from-indigo-500 to-blue-500 rounded-xl shadow-lg h-fit p-2 px-4 mx-4 md:mx-10 cursor-pointer transition hover:scale-105 hover:from-indigo-600 hover:to-blue-600' >
+                        <AddIcon style={{ fontSize: 22, color: "white" }}  />
+                        <p className='text-white text-base font-semibold ml-2  truncate'>New Project</p>
+                    </button>
                     </section>
                     {/* <div className='flex flex-wrap'>
                         {["Project", "Assign", "Due Date", "Status"].map((short) => (
@@ -118,17 +117,14 @@ function Projects() {
                     <div className='flex flex-wrap gap-3 p-4'>
                         {["Project", "Assign", "Due Date", "Status"].map((filter) => (
                             <div key={filter} className="relative">
-                                <button
-                                    className={`
-                    flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200
-                    ${isOpen === filter
-                                            ? 'bg-amber-500 text-white shadow-lg transform scale-105'
-                                            : 'bg-gradient-to-r from-amber-400 to-amber-500 text-white hover:from-amber-500 hover:to-amber-600 hover:shadow-md'
-                                        }
-                    focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2
-                `}
-                                    onClick={() => setIsOpen(isOpen === filter ? "" : filter)}
-                                >
+                               <button
+                                className={`flex items-center space-x-2 px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 shadow-md
+                                    ${isOpen === filter
+                                        ? 'bg-indigo-600 text-white scale-105 shadow-lg'
+                                        : 'bg-gradient-to-r from-indigo-100 to-blue-100 text-indigo-700 hover:from-indigo-200 hover:to-blue-200 hover:shadow-lg'}
+                                    focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2`}
+                                onClick={() => setIsOpen(isOpen === filter ? "" : filter)}
+                            >
                                     <span>{filter}</span>
                                     <svg
                                         className={`w-4 h-4 transition-transform duration-200 ${isOpen === filter ? 'rotate-180' : ''}`}
@@ -153,13 +149,13 @@ function Projects() {
                                                         setSelected((prev) => [...new Set([...prev, option])]);
                                                         setIsOpen("");
                                                     }}
-                                                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 transition-all duration-150 flex items-center justify-between group"
+                                                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-150 flex items-center justify-between group"
                                                 >
-                                                    <span className="group-hover:text-amber-700 transition-colors duration-150">
+                                                    <span className="group-hover:text-blue-700 transition-colors duration-150">
                                                         {option}
                                                     </span>
                                                     <svg
-                                                        className="w-4 h-4 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                                                        className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-150"
                                                         fill="none"
                                                         stroke="currentColor"
                                                         viewBox="0 0 24 24"
@@ -206,7 +202,7 @@ function Projects() {
 
                     <div className='my-6 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden'>
                         {/* Header */}
-                        <div className='grid grid-cols-3 md:grid-cols-5 gap-4 p-4 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200'>
+                        <div className='grid grid-cols-3 md:grid-cols-5 gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 border-b border-blue-200'>
                             <p className='text-sm font-semibold text-gray-800 uppercase tracking-wide'>Project</p>
                             <p className='text-sm font-semibold text-gray-800 uppercase tracking-wide'>Task</p>
                             <p className='hidden md:block text-sm font-semibold text-gray-800 uppercase tracking-wide'>Assignee</p>
