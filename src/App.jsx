@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Sidenavigation from './components/Sidenavigation';
 import Content from './components/content';
 import CreateProject from './components/createProjects';
@@ -11,9 +11,9 @@ import { Route, Routes } from 'react-router-dom';
 import Topnavigation from './components/topnavigation';
 
 function App() {
- const [showCreateProject,setShowCreateProject]=useState(false)
+  const [showCreateProject, setShowCreateProject] = useState(false)
 
-const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Simulate first load time (e.g. auth check, data preload)
@@ -25,8 +25,8 @@ const [loading, setLoading] = useState(true);
   }, []);
 
   if (loading) {
-    return( 
-    <Loader/> );
+    return (
+      <Loader />);
   }
 
 
@@ -38,37 +38,26 @@ const [loading, setLoading] = useState(true);
 
   return (
     <div className="h-screen flex">
-      <Topnavigation className="block sticky md:hidden"/>
+      <Topnavigation className="block sticky md:hidden" />
       <Sidenavigation onCreateProjectClick={() => setShowCreateProject(true)} />
       <main className="flex-1 flex flex-col overflow-y-auto p-4 bg-gray-50 pt-16 md:pt-4">
-        
-        <Routes>
-          <Route path='/' element={<Content onCreateProjectClick={() => setShowCreateProject(true)} />}/>
-            <Route path='/Dashboard' element={<Content onCreateProjectClick={() => setShowCreateProject(true)} />}/>
-          <Route path='/Settings' element={<Setting/>}/>
-          <Route path='/Calendar' element={<Calendar/>}/>
-          <Route path='/Projects' element={<Projects/>}/>
-          <Route path='/project' element={<Project/>}/>
-        </Routes>
-        {/* <Projects/> */}
-         
-       {/* <Setting/> */}
-       {/* <Project/> */}
-      </main>
-      { showCreateProject &&
 
-        <div className="fixed inset-0  bg-[rgba(0,0,0,0.8)] flex items-center justify-center z-50">
-        <div className="bg-white mx-2 p-6 rounded-xl shadow-xl relative">
-          <CreateProject />
-          <button
-            onClick={() => setShowCreateProject(false)}
-            className="absolute top-2 right-2 text-gray-500 hover:text-black cursor-pointer "
-            >
-            ✖
-          </button>
-        </div>
-      </div>
-          }
+        <Routes>
+          <Route path='/' element={<Content onCreateProjectClick={() => setShowCreateProject(true)} />} />
+          <Route path='/Dashboard' element={<Content onCreateProjectClick={() => setShowCreateProject(true)} />} />
+          <Route path='/Settings' element={<Setting />} />
+          <Route path='/Calendar' element={<Calendar />} />
+          <Route path='/Projects' element={<Projects />} />
+          <Route path='/project' element={<Project  />}/>
+          <Route path='/project/:name' element={<Project />} />
+        </Routes>
+        
+
+      </main>
+      <CreateProject
+        isOpen={showCreateProject}
+        onClose={() => setShowCreateProject(false)}
+      />
 
     </div>
   );
