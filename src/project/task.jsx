@@ -114,7 +114,7 @@ function Task() {
 
       setLoading(true);
       const res = await axios.get(`http://localhost:5000/api/findtask/${name}?title=${searchtask}`)
-console.log("Matched Tasks:", res.data.matchedTasks);
+     
       setTasks(res.data.matchedTasks || []);
       setLoading(false);
 
@@ -163,7 +163,7 @@ console.log("Matched Tasks:", res.data.matchedTasks);
     });
   }
 
-  if (error) { 
+  if (error) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="text-center">
@@ -241,95 +241,95 @@ console.log("Matched Tasks:", res.data.matchedTasks);
 
 
 
-        {loading ? 
-        
-        
-        (<div className="flex justify-center items-center h-64">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 font-medium">Loading tasks...</p>
-        </div>
-      </div>):
-        
-        tasks.length === 0 ? (
-          <div className="flex justify-center items-center h-64">
+        {loading ?
+
+
+          (<div className="flex justify-center items-center h-64">
             <div className="text-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <TaskIcon className="text-indigo-600 text-3xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">No tasks yet</h3>
-              <p className="text-gray-500 mb-4">Get started by creating your first task</p>
-              <button
-                onClick={() => setShowCreateTask(true)}
-                className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl font-medium hover:from-indigo-700 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-              >
-                Create First Task
-              </button>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+              <p className="text-gray-600 font-medium">Loading tasks...</p>
             </div>
-          </div>
-        ) : (
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
-            {tasks.map((task, index) => (
-              <div key={task._id || index} className='group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden'>
-                {/* Task Header */}
-                <div className='p-6 border-b border-gray-100'>
-                  <div className='flex items-start justify-between mb-3'>
-                    <h3 className='text-lg font-bold text-gray-800 leading-tight group-hover:text-indigo-600 transition-colors'>
-                      {task.title || task.name}
-                    </h3>
-                    <button className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                      <MoreVertIcon className="text-gray-400 hover:text-gray-600" />
-                    </button>
-                  </div>
+          </div>) :
 
-                  {/* Status Badge */}
-                  <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(task.status)}`}>
-                    <div className={`w-2 h-2 rounded-full mr-2 ${task.status === 'completed' ? 'bg-green-500' :
-                      task.status === 'in-progress' ? 'bg-blue-500' :
-                        task.status === 'in-review' ? 'bg-purple-500' :
-                          task.status === 'scheduled' ? 'bg-indigo-500' : 'bg-yellow-500'
-                      }`}></div>
-                    {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
-                  </div>
+          tasks.length === 0 ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="text-center">
+                <div className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <TaskIcon className="text-indigo-600 text-3xl" />
                 </div>
-
-                {/* Task Details */}
-                <div className='p-6 space-y-4'>
-                  <div className='flex items-center gap-3'>
-                    <div className="w-8 h-8 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full flex items-center justify-center">
-                      <PersonIcon className="text-indigo-600 text-sm" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 font-medium">Assigned to</p>
-                      <p className="text-sm font-semibold text-gray-800">{task.assignedPerson}</p>
-                    </div>
-                  </div>
-
-                  <div className='flex items-center gap-3'>
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center">
-                      <CalendarMonthIcon className="text-green-600 text-sm" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 font-medium">Due date</p>
-                      <p className="text-sm font-semibold text-gray-800">{task.dueDate || task.duedate}</p>
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className='flex gap-2 pt-2'>
-                    <button className='flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl text-sm font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-md hover:shadow-lg'>
-                      <UploadIcon style={{ fontSize: 16 }} />
-                      Upload Files
-                    </button>
-                    <button className='px-4 py-2 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors'>
-                      Edit
-                    </button>
-                  </div>
-                </div>
+                <h3 className="text-xl font-semibold text-gray-700 mb-2">No tasks yet</h3>
+                <p className="text-gray-500 mb-4">Get started by creating your first task</p>
+                <button
+                  onClick={() => setShowCreateTask(true)}
+                  className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl font-medium hover:from-indigo-700 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  Create First Task
+                </button>
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
+              {tasks.map((task, index) => (
+                <div key={task._id || index} className='group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden'>
+                  {/* Task Header */}
+                  <div className='p-6 border-b border-gray-100'>
+                    <div className='flex items-start justify-between mb-3'>
+                      <h3 className='text-lg font-bold text-gray-800 leading-tight group-hover:text-indigo-600 transition-colors'>
+                        {task.title || task.name}
+                      </h3>
+                      <button className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <MoreVertIcon className="text-gray-400 hover:text-gray-600" />
+                      </button>
+                    </div>
+
+                    {/* Status Badge */}
+                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(task.status)}`}>
+                      <div className={`w-2 h-2 rounded-full mr-2 ${task.status === 'completed' ? 'bg-green-500' :
+                        task.status === 'in-progress' ? 'bg-blue-500' :
+                          task.status === 'in-review' ? 'bg-purple-500' :
+                            task.status === 'scheduled' ? 'bg-indigo-500' : 'bg-yellow-500'
+                        }`}></div>
+                      {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
+                    </div>
+                  </div>
+
+                  {/* Task Details */}
+                  <div className='p-6 space-y-4'>
+                    <div className='flex items-center gap-3'>
+                      <div className="w-8 h-8 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full flex items-center justify-center">
+                        <PersonIcon className="text-indigo-600 text-sm" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 font-medium">Assigned to</p>
+                        <p className="text-sm font-semibold text-gray-800">{task.assignedPerson}</p>
+                      </div>
+                    </div>
+
+                    <div className='flex items-center gap-3'>
+                      <div className="w-8 h-8 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center">
+                        <CalendarMonthIcon className="text-green-600 text-sm" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 font-medium">Due date</p>
+                        <p className="text-sm font-semibold text-gray-800">{task.dueDate || task.duedate}</p>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className='flex gap-2 pt-2'>
+                      <button className='flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl text-sm font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-md hover:shadow-lg'>
+                        <UploadIcon style={{ fontSize: 16 }} />
+                        Upload Files
+                      </button>
+                      <button className='px-4 py-2 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors'>
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
 
 
